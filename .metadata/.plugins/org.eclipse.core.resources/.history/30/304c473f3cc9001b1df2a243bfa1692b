@@ -1,0 +1,16 @@
+package com.lamichhane.mockito.business;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.assertj.core.util.Arrays;
+import org.junit.jupiter.api.Test;
+
+class HamcrestMatchersTest {
+
+	@Test
+	void test() 
+	{
+		List<Integer> scores=Arrays.asList(99,100,101,105);
+	}
+
+}

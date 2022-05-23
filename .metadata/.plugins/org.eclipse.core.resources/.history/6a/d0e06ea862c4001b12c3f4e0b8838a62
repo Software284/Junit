@@ -1,0 +1,15 @@
+package com.lamichhane.mockito.business;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TodoBusinessImplStubTest {
+
+	@Test
+	void test() {
+		ToDoService service=new TodoServiceStub();
+		TodoBusinessImpl impl=new TodoBusinessImpl();
+	}
+
+}

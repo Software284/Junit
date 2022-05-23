@@ -1,0 +1,14 @@
+package com.lamichhane.mockito.data.api;
+
+import java.util.List;
+
+public class TodoServiceStub implements ToDoService
+{
+
+	@Override
+	public List<String> retrieveTodos(String user) 
+	{
+		return null;
+	}
+
+}

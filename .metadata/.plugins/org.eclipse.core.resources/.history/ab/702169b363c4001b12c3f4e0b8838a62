@@ -1,0 +1,21 @@
+package com.lamichhane.mockito.business;
+
+
+
+import org.junit.jupiter.api.Test;
+
+import com.lamichhane.mockito.data.api.ToDoService;
+import com.lamichhane.mockito.data.api.TodoServiceStub;
+
+class TodoBusinessImplStubTest {
+
+	@Test
+	void test() {
+		ToDoService todoServiceStub=new TodoServiceStub();
+		TodoBusinessImpl todoBusinessImpl=new TodoBusinessImpl(todoServiceStub);
+		
+		List<String> filteredTodos=todoBusinessImpl.retrieveTodosRelatedToSpring("Mahesh");
+		
+	}
+
+}

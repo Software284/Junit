@@ -1,0 +1,38 @@
+package com.lamichhane.mockito.business;
+
+
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import com.lamichhane.mockito.data.api.ToDoService;
+import com.lamichhane.mockito.data.api.TodoServiceStub;
+
+class TodoBusinessImplMockTest {
+
+	@Test
+	void testRetrieveTodosRelatedToSpring_usingAMock() 
+	{
+		
+		ToDoService todoServiceMock=mock(ToDoService.class);
+		List<String> todos=new ArrayList<>();
+		todos.add("Learn Spring MVC");
+		todos.add("Learn Spring");
+		todos.add("Learn To Dance");
+		
+		
+		
+		
+		ToDoService todoServiceStub=new TodoServiceStub();
+		TodoBusinessImpl todoBusinessImpl=new TodoBusinessImpl(todoServiceStub);
+		
+		List<String> filteredTodos=todoBusinessImpl.retrieveTodosRelatedToSpring("Mahesh");
+		assertEquals(2,filteredTodos.size());
+	}
+
+}

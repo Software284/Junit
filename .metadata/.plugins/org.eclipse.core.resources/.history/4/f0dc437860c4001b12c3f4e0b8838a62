@@ -1,0 +1,6 @@
+package com.lamichhane.mockito.data.api;
+
+public class TodoServiceStub implements TodoService
+{
+
+}

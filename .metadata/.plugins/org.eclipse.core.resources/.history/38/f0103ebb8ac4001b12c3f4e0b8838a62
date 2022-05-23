@@ -1,0 +1,106 @@
+package com.lamichhane.mockito.business;
+
+
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import com.lamichhane.mockito.data.api.ToDoService;
+
+class TodoBusinessImplMockTest {
+
+	@Test
+	void testRetrieveTodosRelatedToSpring_usingAMock() 
+	{
+		
+		ToDoService todoServiceMock=mock(ToDoService.class);
+		List<String> todos=new ArrayList<>();
+		todos.add("Learn Spring MVC");
+		todos.add("Learn Spring");
+		todos.add("Learn To Dance");
+		
+		when(todoServiceMock.retrieveTodos("Mahesh")).thenReturn(todos);
+		
+		TodoBusinessImpl todoBusinessImpl=new TodoBusinessImpl(todoServiceMock);
+		
+		List<String> filteredTodos=todoBusinessImpl.retrieveTodosRelatedToSpring("Mahesh");
+		assertEquals(2,filteredTodos.size());
+	}
+	
+	@Test
+	void testRetrieveTodosRelatedToSpring_withEmptyList() 
+	{
+		
+		ToDoService todoServiceMock=mock(ToDoService.class);
+		List<String> todos=new ArrayList<>();
+		
+		when(todoServiceMock.retrieveTodos("Mahesh")).thenReturn(todos);
+		
+		TodoBusinessImpl todoBusinessImpl=new TodoBusinessImpl(todoServiceMock);
+		
+		List<String> filteredTodos=todoBusinessImpl.retrieveTodosRelatedToSpring("Mahesh");
+		assertEquals(0,filteredTodos.size());
+	}
+	
+	@Test
+	void testRetrieveTodosRelatedToSpring_usingBDD() 
+	{
+		
+		//Given
+		ToDoService todoServiceMock=mock(ToDoService.class);
+		List<String> todos=new ArrayList<>();
+		todos.add("Learn Spring MVC");
+		todos.add("Learn Spring");
+		todos.add("Learn To Dance");
+		
+		//when(todoServiceMock.retrieveTodos("Mahesh")).thenReturn(todos);
+		given(todoServiceMock.retrieveTodos("Mahesh")).willReturn(todos);
+
+		TodoBusinessImpl todoBusinessImpl=new TodoBusinessImpl(todoServiceMock);
+		
+		
+		//When
+		List<String> filteredTodos=todoBusinessImpl.retrieveTodosRelatedToSpring("Mahesh");
+		
+		
+		//Then
+		assertThat(filteredTodos.size(),is(2));
+		
+	}
+	
+	@Test
+	void testDeleteTodosNotRelatedToSpring_usingBDD() 
+	{
+		
+		//Given
+		ToDoService todoServiceMock=mock(ToDoService.class);
+		List<String> todos=new ArrayList<>();
+		todos.add("Learn Spring MVC");
+		todos.add("Learn Spring");
+		todos.add("Learn To Dance");
+		
+		//when(todoServiceMock.retrieveTodos("Mahesh")).thenReturn(todos);
+		given(todoServiceMock.retrieveTodos("Mahesh")).willReturn(todos);
+
+		TodoBusinessImpl todoBusinessImpl=new TodoBusinessImpl(todoServiceMock);
+		
+		
+		//When
+		todoBusinessImpl.deleteToDosNotRelatedToSpring("Dummy");
+		
+		
+		//Then
+		assertThat(filteredTodos.size(),is(2));
+		
+	}
+
+}

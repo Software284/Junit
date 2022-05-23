@@ -1,0 +1,20 @@
+package com.lamichhane.mockito.business;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+class HamcrestMatchersTest {
+
+	@Test
+	void test() 
+	{
+		List<Integer> scores=new ArrayList<>();
+		scores.add(99);
+		scores.add(100);
+		scores.add(101);
+		scores.add(105);
+	}
+
+}
